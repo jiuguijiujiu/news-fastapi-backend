@@ -97,7 +97,7 @@ pip install fastapi==0.141.1 uvicorn==0.52.4 sqlalchemy==2.0.43 aiomysql==0.3.2 
    CREATE DATABASE IF NOT EXISTS news_app DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
    ```
 
-2. 依次创建以下数据表：`user`、`user_token`、`news_category`、`news`、`favorite`、`history`，并导入新闻与分类测试数据。
+2. 依次创建以下数据表：`user`、`user_token`、`news_category`、`news`、`favorite`、`history`，并导入新闻与分类测试数据。也可以直接导入项目物料的数据库sql文件
 
 ### 4. 修改配置
 
