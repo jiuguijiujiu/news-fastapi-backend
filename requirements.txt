@@ -1,0 +1,44 @@
+# =============================================================
+# 今日头条新闻后端（FastAPI）依赖清单
+# 适用环境：Python >= 3.10（开发验证环境：Python 3.13）
+# 安装命令：pip install -r requirements.txt
+# 说明：pydantic、starlette、anyio 等为 FastAPI 传递依赖，
+#       由 pip 自动解析安装，无需在此重复声明
+# =============================================================
+
+# -------------------------------------------------------------
+# 核心运行依赖
+# -------------------------------------------------------------
+
+# Web 框架：RESTful API、依赖注入、OpenAPI 文档（routers/、main.py）
+fastapi==0.141.1
+
+# ASGI 服务器：启动命令 uvicorn main:app --reload
+uvicorn==0.52.4
+
+# 异步 ORM：2.0 系列，项目使用 AsyncSession / Mapped 新式声明（models/、crud/）
+SQLAlchemy==2.0.43
+
+# MySQL 异步驱动：对应连接串 mysql+aiomysql://，由 SQLAlchemy 按方言加载（config/db_conf.py）
+aiomysql==0.3.2
+
+# Redis 异步客户端：redis.asyncio，用于新闻分类/列表缓存（config/cache_config.py）
+redis==8.1.0
+
+# 密码哈希框架：CryptContext（utils/security.py）
+passlib==1.7.4
+
+# bcrypt 算法实现：必须锁定 4.0.1 ——
+# passlib 1.7.4 读取 bcrypt.__about__ 版本号，该属性在 bcrypt>=4.1 中已被移除，
+# 使用更高版本会触发 "(trapped) error reading bcrypt version" 兼容性错误
+bcrypt==4.0.1
+
+# -------------------------------------------------------------
+# 开发 / 测试依赖（仅本地开发与测试需要，生产运行可不安装）
+# -------------------------------------------------------------
+
+# 测试框架
+pytest==8.4.2
+
+# HTTP 客户端：fastapi.testclient.TestClient 的底层依赖
+httpx==0.28.1
